@@ -1,0 +1,119 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Import design tokens from Figma */
+@import './generated/tokens.css';
+
+@layer base {
+  :root {
+    /* Light theme semantic colors mapped to design tokens */
+    --background: 0 0% 100%;
+    --foreground: 222.2 84% 4.9%;
+    
+    --card: 0 0% 100%;
+    --card-foreground: 222.2 84% 4.9%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 222.2 84% 4.9%;
+    
+    --primary: var(--color-primary-500);
+    --primary-foreground: 210 40% 98%;
+    
+    --secondary: var(--color-secondary-100);
+    --secondary-foreground: 222.2 84% 4.9%;
+    
+    --muted: var(--color-secondary-50);
+    --muted-foreground: 215.4 16.3% 46.9%;
+    
+    --accent: var(--color-secondary-100);
+    --accent-foreground: 222.2 84% 4.9%;
+    
+    --destructive: var(--color-error-500);
+    --destructive-foreground: 210 40% 98%;
+    
+    --border: var(--color-secondary-200);
+    --input: var(--color-secondary-100);
+    --ring: var(--color-primary-500);
+    
+    --radius: var(--radius-lg);
+  }
+
+  .dark {
+    /* Dark theme semantic colors mapped to design tokens */
+    --background: var(--color-secondary-900);
+    --foreground: 210 40% 98%;
+    
+    --card: var(--color-secondary-800);
+    --card-foreground: 210 40% 98%;
+    --popover: var(--color-secondary-800);
+    --popover-foreground: 210 40% 98%;
+    
+    --primary: var(--color-primary-400);
+    --primary-foreground: 222.2 84% 4.9%;
+    
+    --secondary: var(--color-secondary-700);
+    --secondary-foreground: 210 40% 98%;
+    
+    --muted: var(--color-secondary-700);
+    --muted-foreground: 215 20.2% 65.1%;
+    
+    --accent: var(--color-secondary-700);
+    --accent-foreground: 210 40% 98%;
+    
+    --destructive: var(--color-error-400);
+    --destructive-foreground: 210 40% 98%;
+    
+    --border: var(--color-secondary-700);
+    --input: var(--color-secondary-700);
+    --ring: var(--color-primary-400);
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground;
+    font-family: var(--font-sans, system-ui, sans-serif);
+  }
+}
+
+@layer components {
+  /* Utility classes using design tokens */
+  .text-primary {
+    color: var(--color-primary-600);
+  }
+  
+  .text-primary-hover:hover {
+    color: var(--color-primary-700);
+  }
+  
+  .bg-primary {
+    background-color: var(--color-primary-500);
+  }
+  
+  .bg-primary-hover:hover {
+    background-color: var(--color-primary-600);
+  }
+  
+  .text-success {
+    color: var(--color-success-600);
+  }
+  
+  .text-warning {
+    color: var(--color-warning-600);
+  }
+  
+  .text-error {
+    color: var(--color-error-600);
+  }
+  
+  .shadow-token {
+    box-shadow: var(--shadow-md);
+  }
+  
+  .shadow-token-lg {
+    box-shadow: var(--shadow-lg);
+  }
+}
