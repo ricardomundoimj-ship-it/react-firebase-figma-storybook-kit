@@ -1,0 +1,63 @@
+{
+  "figma": {
+    "fileId": "YOUR_FIGMA_FILE_ID",
+    "apiKey": "YOUR_FIGMA_API_KEY",
+    "teamId": "YOUR_TEAM_ID"
+  },
+  "cursor": {
+    "mcpPlugin": {
+      "enabled": true,
+      "syncInterval": 30000,
+      "watchMode": true
+    }
+  },
+  "sync": {
+    "source": "figma",
+    "target": "./src/tokens",
+    "outputDirectory": "./src/generated",
+    "formats": ["css", "js", "json"],
+    "mappings": {
+      "colors": {
+        "figmaVariableCollections": ["Colors", "Brand Colors"],
+        "outputFile": "./src/tokens/colors/semantic.json"
+      },
+      "typography": {
+        "figmaVariableCollections": ["Typography", "Text Styles"],
+        "outputFile": "./src/tokens/typography/typography.json"
+      },
+      "spacing": {
+        "figmaVariableCollections": ["Spacing", "Layout"],
+        "outputFile": "./src/tokens/spacing/spacing.json"
+      },
+      "effects": {
+        "figmaVariableCollections": ["Shadows", "Effects"],
+        "outputFile": "./src/tokens/shadows/effects.json"
+      }
+    },
+    "transformers": {
+      "css": {
+        "enabled": true,
+        "format": "css-variables",
+        "outputFile": "./src/generated/tokens.css"
+      },
+      "tailwind": {
+        "enabled": true,
+        "format": "tailwind-config",
+        "outputFile": "./src/generated/tailwind.tokens.js"
+      },
+      "typescript": {
+        "enabled": true,
+        "format": "type-definitions",
+        "outputFile": "./src/generated/token-types.ts"
+      }
+    }
+  },
+  "build": {
+    "autoSync": true,
+    "onChange": ["npm run build:tokens", "npm run storybook:build"],
+    "hooks": {
+      "beforeSync": "echo 'Starting token sync...'",
+      "afterSync": "echo 'Token sync completed!'"
+    }
+  }
+}
